@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestro Amor</title>
+
+<style>
+body{
+  margin:0;
+  background:linear-gradient(45deg,#ff4da6,#ff1a75);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:Arial;
+  overflow:hidden;
+}
+
+/* Carta */
+.carta{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  width:380px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Árbol */
+.arbol{
+  position:absolute;
+  bottom:0;
+  right:40px;
+  text-align:center;
+}
+
+.tronco{
+  width:20px;
+  height:100px;
+  background:#8b4513;
+  margin:auto;
+}
+
+.copa{
+  position:relative;
+  width:160px;
+  height:140px;
+  margin:auto;
+}
+
+.corazon{
+  position:absolute;
+  color:red;
+  font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<div class="carta">
+  <h3>Para el amor de mi vida 💗</h3>
+  <p>Si pudiera elegir un lugar seguro, sería a tu lado.</p>
+  <p><strong>Mi amor por ti comenzó un 13 de julio del 2025 ❤️</strong></p>
+  <p id="contador"></p>
+</div>
+
+<div class="arbol">
+  <div class="copa" id="copa"></div>
+  <div class="tronco"></div>
+</div>
+
+<script>
+/* Crear copa del árbol con corazones */
+for(let i=0;i<70;i++){
+  const heart=document.createElement("div");
+  heart.className="corazon";
+  heart.innerHTML="❤";
+
+  // Forma tipo copa redondeada
+  const x = Math.random()*160;
+  const y = Math.random()*100;
+
+  heart.style.left=x+"px";
+  heart.style.top=y+"px";
+
+  document.getElementById("copa").appendChild(heart);
+}
+
+/* Contador desde 13 julio 2025 */
+const inicio=new Date("July 13, 2025 00:00:00").getTime();
+
+setInterval(()=>{
+  const ahora=new Date().getTime();
+  const diff=ahora-inicio;
+
+  const dias=Math.floor(diff/(1000*60*60*24));
+  const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const minutos=Math.floor((diff%(1000*60*60))/(1000*60));
+  const segundos=Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById("contador").innerHTML=
+  `Han pasado ${dias} días ${horas}h ${minutos}m ${segundos}s 💕`;
+},1000);
+</script>
+
+</body>
+                                </html>
