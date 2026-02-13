@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestro Amor</title>
+
+<style>
+body{
+  margin:0;
+  background:#ff2f7a;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:Arial, sans-serif;
+}
+
+.tarjeta{
+  background:#f4ede4;
+  width:95%;
+  max-width:900px;
+  height:520px;
+  border-radius:25px;
+  position:relative;
+  padding:50px;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+/* TEXTO IZQUIERDA */
+.texto{
+  width:45%;
+}
+
+.texto h2{
+  font-weight:normal;
+}
+
+.texto p{
+  font-size:20px;
+  line-height:1.5;
+}
+
+/* CONTADOR */
+#contador{
+  position:absolute;
+  bottom:60px;
+  left:50px;
+  font-size:20px;
+}
+
+/* LINEA NEGRA */
+.linea{
+  position:absolute;
+  bottom:30px;
+  left:0;
+  width:100%;
+  height:3px;
+  background:black;
+}
+
+/* ARBOL */
+.arbol{
+  position:absolute;
+  right:100px;
+  bottom:30px;
+  width:300px;
+  height:400px;
+}
+
+.tronco{
+  width:30px;
+  height:140px;
+  background:#8b4513;
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.copa{
+  position:absolute;
+  bottom:120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:250px;
+}
+
+.corazon{
+  position:absolute;
+  font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="tarjeta">
+
+  <div class="texto">
+    <h2>Para el amor de mi vida:</h2>
+
+    <p>
+      Si pudiera elegir un lugar seguro, sería a tu lado.
+    </p>
+
+    <p>
+      Cuanto más tiempo estoy contigo más te amo.
+    </p>
+
+    <p><strong>— I Love You! —</strong></p>
+  </div>
+
+  <div id="contador"></div>
+  <div class="linea"></div>
+
+  <div class="arbol">
+    <div class="copa" id="copa"></div>
+    <div class="tronco"></div>
+  </div>
+
+</div>
+
+<script>
+
+/* GENERAR MUCHOS CORAZONES */
+const copa = document.getElementById("copa");
+
+for(let i=0;i<250;i++){
+  const heart=document.createElement("div");
+  heart.className="corazon";
+  heart.innerHTML="❤";
+
+  heart.style.left=Math.random()*260+"px";
+  heart.style.top=Math.random()*200+"px";
+
+  const colores=["#ff0000","#ff4d4d","#ff1a1a","#ff8080","#ff6666","#ff99aa"];
+  heart.style.color=colores[Math.floor(Math.random()*colores.length)];
+
+  heart.style.fontSize=(Math.random()*15+10)+"px";
+
+  copa.appendChild(heart);
+}
+
+/* CONTADOR DESDE 13 JULIO 2025 */
+const inicio=new Date("July 13, 2025 00:00:00").getTime();
+
+setInterval(()=>{
+  const ahora=new Date().getTime();
+  const diff=ahora-inicio;
+
+  const dias=Math.floor(diff/(1000*60*60*24));
+  const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const minutos=Math.floor((diff%(1000*60*60))/(1000*60));
+  const segundos=Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById("contador").innerHTML=
+  `Mi amor por ti comenzó un 13 de julio del 2025 ❤️<br><br>
+   Han pasado...<br>
+   <strong>${dias}</strong> días 
+   <strong>${horas}</strong> horas 
+   <strong>${minutos}</strong> minutos 
+   <strong>${segundos}</strong> segundos 💕`;
+},1000);
+
+</script>
+
+</body>
+  </html>
